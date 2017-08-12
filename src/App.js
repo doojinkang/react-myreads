@@ -6,11 +6,11 @@ import './App.css'
 import ListBooks from './ListBooks'
 import SearchBooks from './SearchBooks'
 
+export const BOOK_NONE =        0
 export const BOOK_READING =	    1
 export const BOOK_WANNA_READ =	2
 export const BOOK_READ =	      3
-export const BOOK_NONE =        0
-export const BOOKSHELF_TITLES = ['Currently Reading', 'Want to Read', 'Read' ]
+export const BOOKSHELF_TITLES = ['None', 'Currently Reading', 'Want to Read', 'Read' ]
 
 class BooksApp extends React.Component {
 
