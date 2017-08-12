@@ -2,8 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import { BOOKSHELF_TITLES } from './ListBooks'
+const BOOK_OPTIONS = ['currentlyReading', 'wantToRead', 'read', 'none']
 
 class ListShelf extends Component {
+
+  bookOptionChange = (event) => {
+    console.log(event.target.name, event.target.value)
+  }
 
   render() {
     return (
@@ -19,7 +24,9 @@ class ListShelf extends Component {
                   <div className="book-top">
                     <div className="book-cover" style={{ width: book.width, height: book.height, backgroundImage: `url("${book.cover}")` }}></div>
                     <div className="book-shelf-changer">
-                      <select>
+                      <select name={book.title}
+                              value={BOOK_OPTIONS[book.shelf]}
+                              onChange={this.bookOptionChange}>
                         <option value="none" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
