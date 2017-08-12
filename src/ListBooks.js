@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ListShelf from './ListShelf'
 
-const BOOK_READING =	  0
-const BOOK_WANNA_READ =	1
-const BOOK_READ	=	      2
+export const BOOK_READING =	    1
+export const BOOK_WANNA_READ =	2
+export const BOOK_READ =	      3
+export const BOOK_NONE =        0
 export const BOOKSHELF_TITLES = ['Currently Reading', 'Want to Read', 'Read' ]
 
 const books = [

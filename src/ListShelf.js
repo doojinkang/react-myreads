@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { BOOKSHELF_TITLES } from './ListBooks'
+import { BOOK_READING, BOOK_WANNA_READ, BOOK_READ, BOOK_NONE, BOOKSHELF_TITLES } from './ListBooks'
 const BOOK_OPTIONS = ['currentlyReading', 'wantToRead', 'read', 'none']
 
 class ListShelf extends Component {
@@ -28,10 +28,10 @@ class ListShelf extends Component {
                               value={BOOK_OPTIONS[book.shelf]}
                               onChange={this.bookOptionChange}>
                         <option value="none" disabled>Move to...</option>
-                        <option value="currentlyReading">Currently Reading</option>
-                        <option value="wantToRead">Want to Read</option>
-                        <option value="read">Read</option>
-                        <option value="none">None</option>
+                        <option value={BOOK_READING}>Currently Reading</option>
+                        <option value={BOOK_WANNA_READ}>Want to Read</option>
+                        <option value={BOOK_READ}>Read</option>
+                        <option value={BOOK_NONE}>None</option>
                       </select>
                     </div>
                   </div>
