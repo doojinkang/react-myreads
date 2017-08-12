@@ -74,6 +74,20 @@ class ListBooks extends Component {
 
   handleChange = (title, shelf) => {
     console.log(title, shelf)
+    let newBooks = this.state.books
+    // console.log(newBooks)
+    if ( shelf === BOOK_NONE ) {
+      newBooks = this.state.books.filter( (book) => book.title !== title)
+    }
+    else {
+      newBooks.forEach((book) => {
+        if (book.title === title)
+          book.shelf = shelf
+      })
+    }
+    this.setState ( {
+      books: newBooks
+    })
   }
 
   render() {
