@@ -83,7 +83,7 @@ class ListBooks extends Component {
 
 										{books.filter( (book) => (book.shelf === BOOK_READING))
                           .map( (book) => (
-											<li>
+											<li key={book.title}>
 												<div className="book">
 													<div className="book-top">
 														<div className="book-cover" style={{ width: book.width, height: book.height, backgroundImage: `url("${book.cover}")` }}></div>
@@ -114,7 +114,7 @@ class ListBooks extends Component {
 
 										{books.filter( (book) => (book.shelf === BOOK_WANNA_READ))
                           .map( (book) => (
-											<li>
+											<li key={book.title}>
 												<div className="book">
 													<div className="book-top">
 														<div className="book-cover" style={{ width: book.width, height: book.height, backgroundImage: `url("${book.cover}")` }}></div>
@@ -144,7 +144,7 @@ class ListBooks extends Component {
 
 										{books.filter( (book) => (book.shelf === BOOK_READ))
                           .map( (book) => (
-											<li>
+											<li key={book.title}>
 												<div className="book">
 													<div className="book-top">
 														<div className="book-cover" style={{ width: book.width, height: book.height, backgroundImage: `url("${book.cover}")` }}></div>
