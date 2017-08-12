@@ -69,23 +69,23 @@ const books = [
 
 class ListBooks extends Component {
 
-    render() {
-			return (
-				<div className="list-books">
-					<div className="list-books-title">
-						<h1>MyReads</h1>
-					</div>
-					<div className="list-books-content">
-						<div>
-              <ListShelf books={books} shelf={BOOK_READING}/>
-              <ListShelf books={books} shelf={BOOK_WANNA_READ}/>
-              <ListShelf books={books} shelf={BOOK_READ}/>
-						</div>
-					</div>
-					<div className="open-search">
-						<a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-					</div>
-				</div>
+  render() {
+    return (
+      <div className="list-books">
+        <div className="list-books-title">
+          <h1>MyReads</h1>
+        </div>
+        <div className="list-books-content">
+          <div>
+            <ListShelf books={books} shelf={BOOK_READING}/>
+            <ListShelf books={books} shelf={BOOK_WANNA_READ}/>
+            <ListShelf books={books} shelf={BOOK_READ}/>
+          </div>
+        </div>
+        <div className="open-search">
+          <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+        </div>
+      </div>
 		)
 	}
 }
