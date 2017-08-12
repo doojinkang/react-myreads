@@ -72,6 +72,10 @@ class ListBooks extends Component {
     ]
   }
 
+  handleChange = (title, shelf) => {
+    console.log(title, shelf)
+  }
+
   render() {
     return (
       <div className="list-books">
@@ -80,9 +84,9 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <ListShelf books={this.state.books} shelf={BOOK_READING}/>
-            <ListShelf books={this.state.books} shelf={BOOK_WANNA_READ}/>
-            <ListShelf books={this.state.books} shelf={BOOK_READ}/>
+            <ListShelf books={this.state.books} shelf={BOOK_READING}    bookShelfChange={this.handleChange}/>
+            <ListShelf books={this.state.books} shelf={BOOK_WANNA_READ} bookShelfChange={this.handleChange}/>
+            <ListShelf books={this.state.books} shelf={BOOK_READ}       bookShelfChange={this.handleChange}/>
           </div>
         </div>
         <div className="open-search">

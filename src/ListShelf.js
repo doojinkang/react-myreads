@@ -7,7 +7,10 @@ const BOOK_OPTIONS = ['currentlyReading', 'wantToRead', 'read', 'none']
 class ListShelf extends Component {
 
   bookOptionChange = (event) => {
-    console.log(event.target.name, event.target.value)
+    this.props.bookShelfChange(
+      event.target.name,
+      parseInt(event.target.value, 10)
+    )
   }
 
   render() {
