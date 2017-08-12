@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import ListShelf from './ListShelf'
 
 const BOOK_READING =	  0
 const BOOK_WANNA_READ =	1
 const BOOK_READ	=	      2
-const BOOKSHELF_TITLES = ['Currently Reading', 'Want to Read', 'Read' ]
+export const BOOKSHELF_TITLES = ['Currently Reading', 'Want to Read', 'Read' ]
 
 const books = [
 	{
@@ -76,97 +77,9 @@ class ListBooks extends Component {
 					</div>
 					<div className="list-books-content">
 						<div>
-							<div className="bookshelf">
-								<h2 className="bookshelf-title">Currently Reading</h2>
-								<div className="bookshelf-books">
-									<ol className="books-grid">
-
-										{books.filter( (book) => (book.shelf === BOOK_READING))
-                          .map( (book) => (
-											<li key={book.title}>
-												<div className="book">
-													<div className="book-top">
-														<div className="book-cover" style={{ width: book.width, height: book.height, backgroundImage: `url("${book.cover}")` }}></div>
-														<div className="book-shelf-changer">
-															<select>
-																<option value="none" disabled>Move to...</option>
-																<option value="currentlyReading" selected>Currently Reading</option>
-																<option value="wantToRead">Want to Read</option>
-																<option value="read">Read</option>
-																<option value="none">None</option>
-															</select>
-														</div>
-													</div>
-													<div className="book-title">{book.title}</div>
-													<div className="book-authors">{book.author}</div>
-												</div>
-											</li>
-										))}
-
-									</ol>
-								</div>
-							</div>
-
-							<div className="bookshelf">
-								<h2 className="bookshelf-title">Want to Read</h2>
-								<div className="bookshelf-books">
-									<ol className="books-grid">
-
-										{books.filter( (book) => (book.shelf === BOOK_WANNA_READ))
-                          .map( (book) => (
-											<li key={book.title}>
-												<div className="book">
-													<div className="book-top">
-														<div className="book-cover" style={{ width: book.width, height: book.height, backgroundImage: `url("${book.cover}")` }}></div>
-														<div className="book-shelf-changer">
-															<select>
-																<option value="none" disabled>Move to...</option>
-																<option value="currentlyReading" selected>Currently Reading</option>
-																<option value="wantToRead">Want to Read</option>
-																<option value="read">Read</option>
-																<option value="none">None</option>
-															</select>
-														</div>
-													</div>
-													<div className="book-title">{book.title}</div>
-													<div className="book-authors">{book.author}</div>
-												</div>
-											</li>
-										))}
-
-									</ol>
-								</div>
-							</div>
-							<div className="bookshelf">
-								<h2 className="bookshelf-title">Read</h2>
-								<div className="bookshelf-books">
-									<ol className="books-grid">
-
-										{books.filter( (book) => (book.shelf === BOOK_READ))
-                          .map( (book) => (
-											<li key={book.title}>
-												<div className="book">
-													<div className="book-top">
-														<div className="book-cover" style={{ width: book.width, height: book.height, backgroundImage: `url("${book.cover}")` }}></div>
-														<div className="book-shelf-changer">
-															<select>
-																<option value="none" disabled>Move to...</option>
-																<option value="currentlyReading" selected>Currently Reading</option>
-																<option value="wantToRead">Want to Read</option>
-																<option value="read">Read</option>
-																<option value="none">None</option>
-															</select>
-														</div>
-													</div>
-													<div className="book-title">{book.title}</div>
-													<div className="book-authors">{book.author}</div>
-												</div>
-											</li>
-										))}
-
-									</ol>
-								</div>
-							</div>
+              <ListShelf books={books} shelf={BOOK_READING}/>
+              <ListShelf books={books} shelf={BOOK_WANNA_READ}/>
+              <ListShelf books={books} shelf={BOOK_READ}/>
 						</div>
 					</div>
 					<div className="open-search">
