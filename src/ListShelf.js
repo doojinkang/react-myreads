@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { BOOK_READING, BOOK_WANNA_READ, BOOK_READ, BOOK_NONE, BOOKSHELF_TITLES } from './ListBooks'
+import { BOOK_READING, BOOK_WANNA_READ, BOOK_READ, BOOK_NONE, BOOKSHELF_TITLES } from './App'
 const BOOK_OPTIONS = ['currentlyReading', 'wantToRead', 'read', 'none']
 
 class ListShelf extends Component {
