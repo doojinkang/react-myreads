@@ -23,11 +23,18 @@ class ListShelf extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
 
-            { this.props.books.map( (book) => (
+          { this.props.books.map( (book) => {
+              book.width = 128
+              book.height = 170
+              return (
               <li key={book.title}>
                 <div className="book">
                   <div className="book-top">
-                    <div className="book-cover" style={{ width: book.width, height: book.height, backgroundImage: `url("${book.cover}")` }}></div>
+                    <div className="book-cover"
+                         style={{ width: book.width, height: book.height,
+                                  backgroundImage: `url("${book.imageLinks.thumbnail}")`
+                               }}>
+                    </div>
                     <div className="book-shelf-changer">
                       <select name={book.title}
                               value={book.shelf}
@@ -41,10 +48,13 @@ class ListShelf extends Component {
                     </div>
                   </div>
                   <div className="book-title">{book.title}</div>
-                  <div className="book-authors">{book.author}</div>
+                  <div className="book-authors">
+                    { book.authors && book.authors.join(" / ") }
+                  </div>
                 </div>
               </li>
-            ))}
+              )}
+          )}
 
           </ol>
           { this.props.books.length === 0 && (
