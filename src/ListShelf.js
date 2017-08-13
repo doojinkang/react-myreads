@@ -1,22 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { BOOK_READING, BOOK_WANNA_READ, BOOK_READ, BOOK_NONE, BOOKSHELF_TITLES } from './App'
-const BOOK_OPTIONS = ['currentlyReading', 'wantToRead', 'read', 'none']
-
 class ListShelf extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    shelf: PropTypes.string.isRequired,
+    shelfTitle: PropTypes.string.isRequired,
+    bookShelfChange: PropTypes.func.isRequired
+  }
 
   bookOptionChange = (event) => {
     this.props.bookShelfChange(
       event.target.name,
-      parseInt(event.target.value, 10)
+      event.target.value
     )
   }
 
   render() {
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">{BOOKSHELF_TITLES[this.props.shelf]}</h2>
+        <h2 className="bookshelf-title">{this.props.shelfTitle}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
 
@@ -31,10 +34,10 @@ class ListShelf extends Component {
                               value={book.shelf}
                               onChange={this.bookOptionChange}>
                         <option value="none" disabled>Move to...</option>
-                        <option value={BOOK_READING}>Currently Reading</option>
-                        <option value={BOOK_WANNA_READ}>Want to Read</option>
-                        <option value={BOOK_READ}>Read</option>
-                        <option value={BOOK_NONE}>None</option>
+                        <option value="currentlyReading">Currently Reading</option>
+                        <option value="wantToRead">Want to Read</option>
+                        <option value="read">Read</option>
+                        <option value="">None</option>
                       </select>
                     </div>
                   </div>
