@@ -22,19 +22,19 @@ class ListBooks extends Component {
         <div className="list-books-content">
           <div>
             <ListShelf
-              books={this.props.books}
+              books={this.props.books.filter( (book) => (book.shelf === 'currentlyReading'))}
               shelf='currentlyReading'
               shelfTitle='Currently Reading'
               bookShelfChange={this.handleChange}
             />
             <ListShelf
-              books={this.props.books}
+              books={this.props.books.filter( (book) => (book.shelf === 'wantToRead'))}
               shelf='wantToRead'
               shelfTitle='Want to Read'
               bookShelfChange={this.handleChange}
             />
             <ListShelf
-              books={this.props.books}
+              books={this.props.books.filter( (book) => (book.shelf === 'read'))}
               shelf='read'
               shelfTitle='Read'
               bookShelfChange={this.handleChange}

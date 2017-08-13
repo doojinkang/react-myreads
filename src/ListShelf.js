@@ -23,8 +23,7 @@ class ListShelf extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
 
-            {this.props.books.filter( (book) => (book.shelf === this.props.shelf))
-                  .map( (book) => (
+            { this.props.books.map( (book) => (
               <li key={book.title}>
                 <div className="book">
                   <div className="book-top">
@@ -48,6 +47,12 @@ class ListShelf extends Component {
             ))}
 
           </ol>
+          { this.props.books.length === 0 && (
+            <div className="book-grid">
+              <span> None </span>
+            </div>
+          )}
+
         </div>
       </div>
     )
