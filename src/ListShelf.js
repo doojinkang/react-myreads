@@ -39,11 +39,11 @@ class ListShelf extends Component {
                       <select name={book.id}
                               value={book.shelf}
                               onChange={this.onBookOptionChange}>
-                        <option value="none" disabled>Move to...</option>
+                        <option value="" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
                         <option value="read">Read</option>
-                        <option value="">None</option>
+                        <option value="none">None</option>
                       </select>
                     </div>
                   </div>

@@ -5,8 +5,6 @@ import './App.css'
 import ListBooks from './ListBooks'
 import SearchBooks from './SearchBooks'
 
-export const BOOK_OPTIONS = ['currentlyReading', 'wantToRead', 'read', 'none']
-
 class BooksApp extends React.Component {
 
   state = {
@@ -15,26 +13,22 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     BooksAPI.getAll().then( (books) => {
+      console.log('API.getAll', books.length)
       this.setState( {books} )
     })
   }
 
   handleChange = (id, shelf) => {
-    // const thatBook = this.state.books.filter( (book) => book.id === id )
-    // console.log(thatBook[0].id, thatBook[0].title, thatBook[0].shelf)
-    let newBooks = this.state.books
-    // console.log(newBooks)
-    if ( shelf === "" ) {
-      newBooks = this.state.books.filter( (book) => book.id !== id)
-    }
-    else {
-      newBooks.forEach((book) => {
-        if (book.id === id)
-          book.shelf = shelf
+    let newBooks = [...this.state.books]
+    const thatBook = newBooks.filter( (book) => book.id === id )[0]
+    // console.log(thatBook.id, thatBook.title, thatBook.shelf)
+
+    BooksAPI.update(thatBook, shelf).then ( (res) => {
+      // console.log(res)
+      thatBook.shelf = shelf
+      this.setState ( {
+        books: newBooks
       })
-    }
-    this.setState ( {
-      books: newBooks
     })
   }
 
