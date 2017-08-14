@@ -41,7 +41,7 @@ class SearchBooks extends Component {
                 book.width = 128
                 book.height = 170
                 return (
-                <li key={book.title}>
+                <li key={book.id}>
                   <div className="book">
                     <div className="book-top">
                       <div className="book-cover"
