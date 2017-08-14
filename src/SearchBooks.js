@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 class SearchBooks extends Component {
-  state = {
-    query: ''
-  }
 
   updateQuery = (query) => {
     this.setState( {query: query.trim() })
@@ -28,7 +25,7 @@ class SearchBooks extends Component {
             <input
               type="text"
               placeholder="Search by title or author"
-              value={this.state.query}
+              value={this.props.query}
               onChange={ (event) => this.updateQuery(event.target.value)}
             />
           </div>

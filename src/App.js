@@ -9,7 +9,8 @@ class BooksApp extends React.Component {
 
   state = {
     books : [],
-    searchBooks: []
+    searchBooks: [],
+    query: ''
   }
 
   componentDidMount() {
@@ -34,6 +35,7 @@ class BooksApp extends React.Component {
   }
 
   updateQuery = (query) => {
+    this.setState( { query })
     console.log('updateQuery', query)
     BooksAPI.search(query, 10).then( (books) => {
       this.setState( {
@@ -46,10 +48,17 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route path='/search' render= { () => (
-          <SearchBooks books={this.state.searchBooks} updateQuery={this.updateQuery}/>
+          <SearchBooks
+            books={this.state.searchBooks}
+            query={this.state.query}
+            updateQuery={this.updateQuery}
+          />
         )} />
         <Route exact path='/' render= { () => (
-          <ListBooks books={this.state.books} handleChange={this.handleChange}/>
+          <ListBooks
+            books={this.state.books}
+            handleChange={this.handleChange}
+          />
         )} />
       </div>
     )
