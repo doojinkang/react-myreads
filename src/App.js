@@ -19,16 +19,17 @@ class BooksApp extends React.Component {
     })
   }
 
-  handleChange = (title, shelf) => {
-    console.log(title, shelf)
+  handleChange = (id, shelf) => {
+    // const thatBook = this.state.books.filter( (book) => book.id === id )
+    // console.log(thatBook[0].id, thatBook[0].title, thatBook[0].shelf)
     let newBooks = this.state.books
     // console.log(newBooks)
     if ( shelf === "" ) {
-      newBooks = this.state.books.filter( (book) => book.title !== title)
+      newBooks = this.state.books.filter( (book) => book.id !== id)
     }
     else {
       newBooks.forEach((book) => {
-        if (book.title === title)
+        if (book.id === id)
           book.shelf = shelf
       })
     }

@@ -9,8 +9,8 @@ class ListBooks extends Component {
     handleChange: PropTypes.func.isRequired
   }
 
-  handleChange = (title, shelf) => {
-    this.props.handleChange(title, shelf)
+  handleChange = (id, shelf) => {
+    this.props.handleChange(id, shelf)
   }
 
   render() {

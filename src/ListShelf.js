@@ -9,7 +9,7 @@ class ListShelf extends Component {
     bookShelfChange: PropTypes.func.isRequired
   }
 
-  bookOptionChange = (event) => {
+  onBookOptionChange = (event) => {
     this.props.bookShelfChange(
       event.target.name,
       event.target.value
@@ -36,9 +36,9 @@ class ListShelf extends Component {
                                }}>
                     </div>
                     <div className="book-shelf-changer">
-                      <select name={book.title}
+                      <select name={book.id}
                               value={book.shelf}
-                              onChange={this.bookOptionChange}>
+                              onChange={this.onBookOptionChange}>
                         <option value="none" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
