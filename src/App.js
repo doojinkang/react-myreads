@@ -21,27 +21,55 @@ class BooksApp extends React.Component {
   }
 
   handleChange = (id, shelf) => {
-    let newBooks = [...this.state.books]
-    const thatBook = newBooks.filter( (book) => book.id === id )[0]
-    // console.log(thatBook.id, thatBook.title, thatBook.shelf)
+    const book = BooksAPI.get(id).then( (book) => {
+      BooksAPI.update(book, shelf).then( (res) => {
+        const newBooks = [...this.state.books]
+        const thatBook = newBooks.filter( (book) => book.id === id )[0]
+        if ( typeof thatBook !== 'undefined') {
+          console.log('case exist')
+          thatBook.shelf = shelf
+        }
+        else {
+          console.log('case add from search')
+          book.shelf = shelf
+          newBooks.push(book)
+        }
+        const newSearchBooks = [...this.state.searchBooks]
+        const thatSearchBook = newSearchBooks.filter( (book) => book.id === id)[0]
+        if ( typeof thatSearchBook !== 'undefined') {
+          thatSearchBook.shelf = shelf
+        }
 
-    BooksAPI.update(thatBook, shelf).then ( (res) => {
-      // console.log(res)
-      thatBook.shelf = shelf
-      this.setState ( {
-        books: newBooks
+        this.setState ( {
+          books: newBooks,
+          searchBooks: newSearchBooks
+        })
       })
     })
   }
 
   updateQuery = (query) => {
+    query = query.trim()
     this.setState( { query })
     console.log('updateQuery', query)
-    BooksAPI.search(query, 10).then( (books) => {
-      this.setState( {
-        searchBooks: books
+    if ( query.length > 0 ) {
+      BooksAPI.search(query, 20).then( (qBooks) => {
+        if ( typeof qBooks !== 'undefined' && typeof qBooks.error === 'undefined') {
+          qBooks.forEach( (qBook) => {
+            let res = this.state.books.filter((book) => (book.id == qBook.id))
+            if (res.length > 0)
+              qBook.shelf = res[0].shelf
+          })
+          this.setState( {
+            searchBooks: qBooks
+          })
+        }
       })
-    })
+    } else {
+      this.setState( {
+        searchBooks: []
+      })
+    }
   }
 
   render() {
@@ -52,6 +80,7 @@ class BooksApp extends React.Component {
             books={this.state.searchBooks}
             query={this.state.query}
             updateQuery={this.updateQuery}
+            handleChange={this.handleChange}
           />
         )} />
         <Route exact path='/' render= { () => (

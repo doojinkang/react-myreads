@@ -5,9 +5,18 @@ import PropTypes from 'prop-types'
 class SearchBooks extends Component {
 
   updateQuery = (query) => {
-    this.setState( {query: query.trim() })
-    if ( query)
-      this.props.updateQuery(query)
+    // let trim = query.trim()
+    // if ( trim)
+    //   this.props.updateQuery(trim)
+    this.props.updateQuery(query)
+  }
+
+  onBookOptionChange = (event) => {
+    console.log(event.target.name, event.target.value)
+    this.props.handleChange(
+      event.target.name,
+      event.target.value
+    )
   }
 
   render() {
@@ -47,9 +56,9 @@ class SearchBooks extends Component {
                                  }}>
                       </div>
                       <div className="book-shelf-changer">
-                        <select name={book.title}
+                        <select name={book.id}
                                 value={book.shelf ? book.shelf : "none"}
-                                onChange={this.bookOptionChange}>
+                                onChange={this.onBookOptionChange}>
                           <option value="" disabled>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>
